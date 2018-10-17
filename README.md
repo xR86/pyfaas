@@ -9,6 +9,9 @@ We intend to provide a Function as a Service solution that will accomplish the f
   + to automatically create alarms (for scaling) in Amazon CloudWatch
   + scale dynamically with Docker containers
 
+## Useful links
++ current LaTeX documentation available both in [docs/paper.tex](docs/paper.tex), and on [Overleaf](https://www.overleaf.com/read/zbsqyvbmfxqw) (read-only)
+
 
 ---
 
