@@ -20,7 +20,11 @@ We intend to provide a Function as a Service solution that will accomplish the f
 Articles:
 + https://martinfowler.com/articles/serverless.html
 + https://github.com/cncf/wg-serverless
++ https://github.com/anaibol/awesome-serverless
 
 Solutions:
 + https://github.com/serverless/serverless - https://serverless.com/
 + https://github.com/iron-io/functions
++ https://github.com/kubeless/kubeless - Solution based on Kubernetes
++ https://openwhisk.apache.org/
++ https://fission.io/ - Solution based on Kubernetes
