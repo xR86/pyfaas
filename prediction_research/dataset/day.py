@@ -25,6 +25,17 @@ MAX_TRAFFIC_PER_MINUTE_AT_PEAK = 100
 
 #####################
 
+cycle_mins = CYCLE_HRS * 60
+
+time_steps = list(zip(*[(mins // SUBDIVISION_MINS, f'{mins // 60:02d}:{mins % 60:02d}')
+                        for mins
+                        in range(0, cycle_mins, cycle_mins // 24)]))
+
+time_steps = list(map(list, time_steps))
+
+time_steps[0] += [time_steps[0][-1] + time_steps[0][1]]
+time_steps[1] += ['24:00']
+
 
 def linear_mapping(val: float,
                    lo1: float,
