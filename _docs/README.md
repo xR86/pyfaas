@@ -9,4 +9,13 @@ Contents:
 + [**`resources.bib`**](resources.bib) - bibliography for the LaTeX paper
 
 ### Current Architecture
-![](assets/init_min.png)
+![](assets/architecture_new.png)
+
+
+### Usecase diagram
+![](assets/diagram_usecase.png)
+
+---
+
+### Old Architecture
+![](assets/architecture_old.png)
