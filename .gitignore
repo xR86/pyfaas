@@ -2,4 +2,10 @@
 
 # Permanent ignore
 _docs/assets_orig
+
+# Ignore python extra files
 **/.ipynb_checkpoints
+**/__pycache__
+**/.cache
+
+*.pyc
