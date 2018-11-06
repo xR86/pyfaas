@@ -1,6 +1,10 @@
 import random
 
 import numpy as np
+
+import matplotlib
+matplotlib.use('TkAgg')
+
 import matplotlib.pyplot as plt
 
 from typing import *
@@ -138,8 +142,9 @@ def generate_day_dataset(polling_interval: int,
                          max_traffic: int,
                          max_traffic_at_peak: int,
                          peak_duration: int,
-                         peak_times: List[str]) -> List[int]:
-    """
+                         peak_times: List[str],
+                         plot: bool = False) -> List[int]:
+    """Generate the dataset for a day.
 
     Args:
         polling_interval    (int)        : The length of a pooling period (a.k.a. the number of requests will be polled
@@ -152,6 +157,8 @@ def generate_day_dataset(polling_interval: int,
         peak_times          (list of str): The list of times (as strings of 24-hour format times, e.g. '08:30', '22:17')
                                            that are considered "peak times". Each value should represent a valid time of
                                            day.
+        plot                (bool)       : If this is `True` the returned dataset is also plotted. Mostly used for
+                                           debugging and demos.
 
     Returns:
         list of int: The generated dataset consisting of a list requests per polling interval for each of the polling
@@ -173,6 +180,30 @@ def generate_day_dataset(polling_interval: int,
                                                          polling_interval = polling_interval)
                        for minute
                        in cycle_time_steps]
+
+    if plot:
+
+        cycle_mins = CYCLE_HRS * 60
+
+        time_steps = list(zip(*[(mins // SUBDIVISION_MINS, f'{mins // 60:02d}:{mins % 60:02d}')
+                                for mins
+                                in range(0, cycle_mins, cycle_mins // 24)]))
+
+        time_steps = list(map(list, time_steps))
+
+        time_steps[0] += [time_steps[0][-1] + time_steps[0][1]]
+        time_steps[1] += ['24:00']
+
+        plt.plot(load_with_peaks, color = 'b', linewidth = 1)
+        plt.title('Traffic with peaks (generate_day_dataset())')
+        plt.legend([f'Requests per {polling_interval} minutes (with peaks)'])
+        plt.xlabel('Time of day')
+        plt.ylabel(f'Requests per {polling_interval} minutes')
+        plt.ylim([0, max_traffic_at_peak * polling_interval * 1.25])
+        plt.xticks(*time_steps)
+        plt.grid(True, linestyle = '--')
+
+        plt.show()
 
     return load_with_peaks
 
