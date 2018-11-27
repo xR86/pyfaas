@@ -25,7 +25,7 @@ def extrapolate_peak_times_to_month(year: int,
         month:     (int)        : The month for which to extrapolate.
         peak_times (list of str): The list of times (as strings of 24-hour format times, e.g. '08:30', '22:17') that are
                                   considered "peak times". Each value should represent a valid time of day.
-        variation  (int)        : The maximum noise that can be added to a peak.
+        variation  (int)        : The maximum noise (minutes) that can be added to a peak.
 
     Returns:
         list of list of int: A list of noisy clones of `peak_times`.
@@ -63,6 +63,7 @@ def generate_month_dataset(year: int,
                            max_traffic_at_peak: int,
                            peak_duration: int,
                            peak_times: List[str],
+                           peak_time_max_variation: int = 0,
                            plot: bool = False,
                            weekday_names: List[str] = ('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'),
                            month_names: List[str] = ('Jan', 'Feb',
@@ -73,24 +74,27 @@ def generate_month_dataset(year: int,
     """Generate the dataset for the specified month of the specified year.
 
     Args:
-        year:               (int)        : The year for which to generate.
-        month:              (int)        : The month for which to generate.
-        polling_interval    (int)        : The length of a pooling period (a.k.a. the number of requests will be polled
-                                           every `polling_interval` minutes). Should be in the interval [0, 1440] (the
-                                           number of minutes in a day).
-        min_traffic         (int)        : The minimum number of requests per minute during regular times.
-        max_traffic         (int)        : The maximum number of requests per minute during regular times.
-        max_traffic_at_peak (int)        : The maximum number of requests per minute during peak times.
-        peak_duration       (int)        : The number of minutes the peak should last.
-        peak_times          (list of str): The list of times (as strings of 24-hour format times, e.g. '08:30', '22:17')
-                                           that are considered "peak times". Each value should represent a valid time of
-                                           day.
-        plot                (bool)       : If this is `True` the returned dataset is also plotted. Mostly used for
-                                           debugging and demos.
-        weekday_names       (list of str): The names of weekdays that will be used for plotting if `plot` is `True`.
-                                           Defaults to the English shortened weekday names (Mon, Tue, etc.).
-        month_names         (list of str): The names of months that will be used for plotting is `plot` is `True`.
-                                           Defaults to the English shortened month names (Jan, Feb, etc.).
+        year:                   (int)         : The year for which to generate.
+        month:                  (int)         : The month for which to generate.
+        polling_interval        (int)         : The length of a pooling period (a.k.a. the number of requests will be
+                                                polled every `polling_interval` minutes). Should be in the interval
+                                                [0, 1440] (the number of minutes in a day).
+        min_traffic             (int)         : The minimum number of requests per minute during regular times.
+        max_traffic             (int)         : The maximum number of requests per minute during regular times.
+        max_traffic_at_peak     (int)         : The maximum number of requests per minute during peak times.
+        peak_duration           (int)         : The number of minutes the peak should last.
+        peak_times              (list of str) : The list of times (as strings of 24-hour format times, e.g. '08:30',
+                                                '22:17') that are considered "peak times". Each value should represent a
+                                                valid time of day.
+        peak_time_max_variation (int)         : The maximum time interval, in minutes, that the peaks can be shifted
+                                                with  when adding noise. Defaults to `0` (no shifting of peaks).
+        plot                    (bool)        : If this is `True` the returned dataset is also plotted. Mostly used for
+                                                debugging and demos. Defaults to `False`.
+        weekday_names           (list of str) : The names of weekdays that will be used for plotting if `plot` is
+                                                `True`. Defaults to the English shortened weekday names
+                                                (Mon, Tue, etc.).
+        month_names             (list of str) : The names of months that will be used for plotting is `plot` is `True`.
+                                                Defaults to the English shortened month names (Jan, Feb, etc.).
 
     Returns:
         list of list of int: A list of datasets, each representing the traffic for one day as returned by
@@ -102,7 +106,7 @@ def generate_month_dataset(year: int,
     noisy_peak_times = extrapolate_peak_times_to_month(year = year,
                                                        month = month,
                                                        peak_times = peak_times,
-                                                       variation = 180)
+                                                       variation = peak_time_max_variation)
 
     month_day_traffic = [dataset.day.generate_day_dataset(polling_interval = polling_interval,
                                                           min_traffic = min_traffic,
@@ -133,12 +137,12 @@ def generate_month_dataset(year: int,
         for day_ind, day in enumerate(month_day_traffic):
             plt.subplot(5, 7, month_start_weekday + day_ind + 1)
             plt.plot(day, color = 'b', linewidth = 0.5)
-            plt.ylim([0, dataset.day.MAX_TRAFFIC_PER_MINUTE_AT_PEAK * dataset.day.SUBDIVISION_MINS * 1.25])
+            plt.ylim([0, max_traffic_at_peak * polling_interval * 1.25])
             plt.xticks(time_steps, time_stamps, rotation = 0)
             plt.grid(True, linestyle = '--')
             day_suff = 'st' if day_ind % 10 == 0 else 'nd' if day_ind % 10 == 1 else 'rd' if day_ind % 10 == 2 else 'th'
             plt.text(time_steps[-1] * 0.8,
-                     dataset.day.MAX_TRAFFIC_PER_MINUTE_AT_PEAK * dataset.day.SUBDIVISION_MINS * 1.1,
+                     max_traffic_at_peak * polling_interval * 1.1,
                      f'{day_ind + 1}{day_suff}',
                      fontweight = 'bold')
 
@@ -157,8 +161,9 @@ if __name__ == '__main__':
                            month = 2,
                            polling_interval = 5,
                            min_traffic = 1,
-                           max_traffic = 10,
+                           max_traffic = 50,
                            max_traffic_at_peak = 100,
                            peak_duration = 120,
                            peak_times = dataset.day.PEAKS,
+                           peak_time_max_variation = 120,
                            plot = True)
