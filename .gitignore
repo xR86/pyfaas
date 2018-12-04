@@ -4,6 +4,7 @@
 _docs/assets_orig
 
 # Ignore python extra files
+**/.idea
 **/.ipynb_checkpoints
 **/__pycache__
 **/.cache
