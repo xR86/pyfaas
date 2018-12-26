@@ -36,6 +36,31 @@ def generate_year_dataset(year: int,
                                                     'Jun', 'Jul', 'Aug',
                                                     'Sep', 'Oct', 'Nov',
                                                     'Dec')) -> List[List[int]]:
+    """Generate noisy data for one year using the month data generation function `dataset.month.generate_month_dataset`.
+
+    Args:
+        year:                   (int)         : The year for which to generate.
+        polling_interval        (int)         : The length of a pooling period (a.k.a. the number of requests will be
+                                                polled every `polling_interval` minutes). Should be in the interval
+                                                [0, 1440] (the number of minutes in a day).
+        min_traffic             (int)         : The minimum number of requests per minute during regular times.
+        max_traffic             (int)         : The maximum number of requests per minute during regular times.
+        max_traffic_at_peak     (int)         : The maximum number of requests per minute during peak times.
+        peak_duration           (int)         : The number of minutes the peak should last.
+        peak_times              (list of str) : The list of times (as strings of 24-hour format times, e.g. '08:30',
+                                                '22:17') that are considered "peak times". Each value should represent a
+                                                valid time of day.
+        peak_time_max_variation (int)         : The maximum time interval, in minutes, that the peaks can be shifted
+                                                with  when adding noise. Defaults to `0` (no shifting of peaks).
+        plot                    (bool)        : If this is `True` the returned dataset is also plotted. Mostly used for
+                                                debugging and demos. Defaults to `False`.
+        month_names             (list of str) : The names of months that will be used for plotting is `plot` is `True`.
+                                                Defaults to the English shortened month names (Jan, Feb, etc.).
+
+    Returns:
+        list of list of int: A list of datasets, each representing the traffic for one day as returned by
+                             `dataset.day.generate_month_dataset`.
+    """
 
     year_month_traffic = []
     for month_ind, month_name in enumerate(month_names):
