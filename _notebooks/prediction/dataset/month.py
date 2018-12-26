@@ -3,18 +3,22 @@ import calendar
 
 from typing import *
 
+import numpy as np
+
 import matplotlib
 matplotlib.use('TkAgg')
 
 import matplotlib.pyplot as plt
 
-import dataset.day
+from prediction.dataset import generate_day_dataset
+from prediction.dataset import time_steps as TIME_STEPS
+from prediction.dataset import PEAKS
 
 
-def extrapolate_peak_times_to_month(year: int,
-                                    month: int,
-                                    peak_times: List[str],
-                                    variation: int = None) -> List[List[str]]:
+def _extrapolate_peak_times_to_month(year: int,
+                                     month: int,
+                                     peak_times: List[str],
+                                     variation: int = None) -> List[List[str]]:
     """Extrapolate and add noise to the set of peak times to the length of the specified month of the specified year.
 
     The noise is added by shifting each peak with a random number of minutes from the interval
@@ -70,7 +74,7 @@ def generate_month_dataset(year: int,
                                                      'Mar', 'Apr', 'May',
                                                      'Jun', 'Jul', 'Aug',
                                                      'Sep', 'Oct', 'Nov',
-                                                     'Dec')) -> List[List[int]]:
+                                                     'Dec')) -> np.ndarray:
     """Generate the dataset for the specified month of the specified year.
 
     Args:
@@ -97,30 +101,30 @@ def generate_month_dataset(year: int,
                                                 Defaults to the English shortened month names (Jan, Feb, etc.).
 
     Returns:
-        list of list of int: A list of datasets, each representing the traffic for one day as returned by
-                             `dataset.day.generate_day_dataset`.
+        np.ndarray int: A 2d Numpy array of datasets, each row representing the traffic for one day as returned by
+                        `dataset.day.generate_day_dataset`.
     """
 
     month_start_weekday, month_length = calendar.monthrange(year, month)
 
-    noisy_peak_times = extrapolate_peak_times_to_month(year = year,
-                                                       month = month,
-                                                       peak_times = peak_times,
-                                                       variation = peak_time_max_variation)
+    noisy_peak_times = _extrapolate_peak_times_to_month(year = year,
+                                                        month = month,
+                                                        peak_times = peak_times,
+                                                        variation = peak_time_max_variation)
 
-    month_day_traffic = [dataset.day.generate_day_dataset(polling_interval = polling_interval,
-                                                          min_traffic = min_traffic,
-                                                          max_traffic = max_traffic,
-                                                          max_traffic_at_peak = max_traffic_at_peak,
-                                                          peak_duration = peak_duration,
-                                                          peak_times = noisy_peak_times_for_day)
-                         for i, noisy_peak_times_for_day
-                         in zip(range(month_length), noisy_peak_times)]
+    month_day_traffic = np.array([generate_day_dataset(polling_interval = polling_interval,
+                                                       min_traffic = min_traffic,
+                                                       max_traffic = max_traffic,
+                                                       max_traffic_at_peak = max_traffic_at_peak,
+                                                       peak_duration = peak_duration,
+                                                       peak_times = noisy_peak_times_for_day)
+                                  for i, noisy_peak_times_for_day
+                                  in zip(range(month_length), noisy_peak_times)])
 
     if plot:
 
-        time_steps = dataset.day.time_steps[0][::12]
-        time_stamps = dataset.day.time_steps[1][::12]
+        time_steps = TIME_STEPS[0][::12]
+        time_stamps = TIME_STEPS[1][::12]
 
         plt.figure(1)
         plt.subplots_adjust(wspace = 0.35, hspace = 0.35)
@@ -164,6 +168,6 @@ if __name__ == '__main__':
                            max_traffic = 50,
                            max_traffic_at_peak = 100,
                            peak_duration = 120,
-                           peak_times = dataset.day.PEAKS,
+                           peak_times = PEAKS,
                            peak_time_max_variation = 120,
                            plot = True)

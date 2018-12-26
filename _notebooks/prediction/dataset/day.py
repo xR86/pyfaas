@@ -143,7 +143,7 @@ def generate_day_dataset(polling_interval: int,
                          max_traffic_at_peak: int,
                          peak_duration: int,
                          peak_times: List[str],
-                         plot: bool = False) -> List[int]:
+                         plot: bool = False) -> np.ndarray:
     """Generate the dataset for a day.
 
     Args:
@@ -161,8 +161,8 @@ def generate_day_dataset(polling_interval: int,
                                            debugging and demos.
 
     Returns:
-        list of int: The generated dataset consisting of a list requests per polling interval for each of the polling
-                     intervals over the course of a day.
+        np.ndarray of int: The generated dataset consisting of a 1d Numpy array with requests per polling interval for
+                           each of the polling intervals over the course of a day.
     """
 
     cycle_mins = 24 * 60
@@ -171,15 +171,15 @@ def generate_day_dataset(polling_interval: int,
     peaks = [peak.split(':') for peak in peak_times]
     peaks = [int(peak[0]) * 60 + int(peak[1]) for peak in peaks]
 
-    load_with_peaks = [simulate_poll_requests_with_peaks(minute,
-                                                         min_traffic = min_traffic,
-                                                         max_traffic = max_traffic,
-                                                         max_traffic_at_peak = max_traffic_at_peak,
-                                                         peaks = peaks,
-                                                         peak_duration = peak_duration,
-                                                         polling_interval = polling_interval)
-                       for minute
-                       in cycle_time_steps]
+    load_with_peaks = np.array([simulate_poll_requests_with_peaks(minute,
+                                                                  min_traffic = min_traffic,
+                                                                  max_traffic = max_traffic,
+                                                                  max_traffic_at_peak = max_traffic_at_peak,
+                                                                  peaks = peaks,
+                                                                  peak_duration = peak_duration,
+                                                                  polling_interval = polling_interval)
+                                for minute
+                                in cycle_time_steps])
 
     if plot:
 

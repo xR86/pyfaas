@@ -9,17 +9,21 @@ matplotlib.use('TkAgg')
 
 from matplotlib import pyplot as plt
 
-import dataset.day
-import dataset.month
+from prediction.dataset import generate_month_dataset
 
 
-def floor_avg(iterable: Sequence[int]) -> int:
-    return sum(iterable) // len(iterable)
+def avg_traffic_per_day(days: np.ndarray) -> np.ndarray:
+    """Computes the average load per day for one month's worth of data.
 
+    Args:
+        days (np.ndarray of int): The dataset for one month's worth of data as returned by
+                                  `dataset.month.generate_month_dataset`.
 
-def avg_traffic_per_day(days: List[List[int]]) -> List[int]:
-    days_t = np.array(days).transpose()
-    return [floor_avg(time_step) for time_step in days_t]
+    Returns:
+        np.ndarray of float: A 1d Numpy array with the average traffic per day at each of the timesteps.
+    """
+
+    return days.transpose().mean(axis = 1)
 
 
 def generate_year_dataset(year: int,
@@ -35,7 +39,7 @@ def generate_year_dataset(year: int,
                                                     'Mar', 'Apr', 'May',
                                                     'Jun', 'Jul', 'Aug',
                                                     'Sep', 'Oct', 'Nov',
-                                                    'Dec')) -> List[List[int]]:
+                                                    'Dec')) -> np.ndarray:
     """Generate noisy data for one year using the month data generation function `dataset.month.generate_month_dataset`.
 
     Args:
@@ -58,30 +62,30 @@ def generate_year_dataset(year: int,
                                                 Defaults to the English shortened month names (Jan, Feb, etc.).
 
     Returns:
-        list of list of int: A list of datasets, each representing the traffic for one day as returned by
-                             `dataset.day.generate_month_dataset`.
+        np.ndarray of int: A 2d Numpy array of datasets, each row representing the traffic for one day as returned by
+                          `dataset.day.generate_month_dataset`.
     """
 
     year_month_traffic = []
     for month_ind, month_name in enumerate(month_names):
-        year_month_traffic += [dataset.month.generate_month_dataset(year = year,
-                                                                    month = month_ind + 1,
-                                                                    polling_interval = polling_interval,
-                                                                    min_traffic = min_traffic,
-                                                                    max_traffic = max_traffic,
-                                                                    max_traffic_at_peak = max_traffic_at_peak,
-                                                                    peak_duration = peak_duration,
-                                                                    peak_times = peak_times,
-                                                                    peak_time_max_variation = peak_time_max_variation,
-                                                                    plot = False)]
+        year_month_traffic += [generate_month_dataset(year = year,
+                                                      month = month_ind + 1,
+                                                      polling_interval = polling_interval,
+                                                      min_traffic = min_traffic,
+                                                      max_traffic = max_traffic,
+                                                      max_traffic_at_peak = max_traffic_at_peak,
+                                                      peak_duration = peak_duration,
+                                                      peak_times = peak_times,
+                                                      peak_time_max_variation = peak_time_max_variation,
+                                                      plot = False)]
 
     if plot:
 
-        year_month_avg_traffic = [avg_traffic_per_day(month_traffic) for month_traffic in year_month_traffic]
+        year_month_avg_traffic = [avg_traffic_per_day(month) for month in year_month_traffic]
         max_traffic = max(max(month_avg_traffic) for month_avg_traffic in year_month_avg_traffic)
 
-        time_steps = dataset.day.time_steps[0][::12]
-        time_stamps = dataset.day.time_steps[1][::12]
+        time_steps = prediction.dataset.day.time_steps[0][::12]
+        time_stamps = prediction.dataset.day.time_steps[1][::12]
 
         plt.figure(1)
         plt.subplots_adjust(hspace = 0.35)
@@ -98,7 +102,7 @@ def generate_year_dataset(year: int,
 
         plt.show()
 
-    year_day_traffic = list(itertools.chain.from_iterable(year_month_traffic))
+    year_day_traffic = np.array(list(itertools.chain.from_iterable(year_month_traffic)))
 
     return year_day_traffic
 
@@ -110,7 +114,7 @@ if __name__ == '__main__':
                           min_traffic = 1,
                           max_traffic = 50,
                           max_traffic_at_peak = 100,
-                          peak_times = dataset.day.PEAKS,
+                          peak_times = prediction.dataset.day.PEAKS,
                           peak_duration = 120,
                           peak_time_max_variation = 120,
                           plot = True)
