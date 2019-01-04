@@ -1,44 +1,16 @@
+import math
 import random
+from datetime import datetime
 
 import numpy as np
 
 import matplotlib
 matplotlib.use('TkAgg')
-
 import matplotlib.pyplot as plt
 
 from typing import *
 
-
-##### Constants #####
-
-CYCLE_HRS = 24
-
-SUBDIVISION_MINS = 5
-
-PEAKS = ['8:30',
-         '19:30']
-
-PEAK_DURATION_MINS = 120
-
-MIN_TRAFFIC_PER_MINUTE = 1
-MAX_TRAFFIC_PER_MINUTE = 10
-
-MAX_TRAFFIC_PER_MINUTE_AT_PEAK = 100
-
-
-#####################
-
-cycle_mins = CYCLE_HRS * 60
-
-time_steps = list(zip(*[(mins // SUBDIVISION_MINS, f'{mins // 60:02d}:{mins % 60:02d}')
-                        for mins
-                        in range(0, cycle_mins, cycle_mins // 24)]))
-
-time_steps = list(map(list, time_steps))
-
-time_steps[0] += [time_steps[0][-1] + time_steps[0][1]]
-time_steps[1] += ['24:00']
+from prediction.dataset.consts import *
 
 
 def linear_mapping(val: float,
@@ -105,24 +77,24 @@ def simulate_poll_requests_no_peaks(min_traffic: int,
 def simulate_poll_requests_with_peaks(minute: int,
                                       min_traffic: int,
                                       max_traffic: int,
-                                      max_traffic_at_peak: int,
+                                      max_traffic_at_peaks: List[int],
                                       peaks: List[int],
-                                      peak_duration: int,
+                                      peak_durations: List[int],
                                       polling_interval: int) -> int:
     """Simulates polling the requests for a specific polling interval of the site.
 
     Args:
-        minute              (int)        : The minute of day at which to simulate the traffic. Should be in the interval
-                                           [0, 1440] (the number of minutes in a day).
-        min_traffic         (int)        : The minimum number of requests per minute during regular traffic times.
-        max_traffic         (int)        : The maximum number of requests per minute during regular traffic times.
-        max_traffic_at_peak (int)        : The maximum number of requests per minute during peak times.
-        peaks               (list of int): The list of times (as minute of day) that are considered "peak times". Each
-                                           value should be in the interval [0, 1440] (the number of minutes in a day).
-        peak_duration       (int)        : The number of minutes the peak should last.
-        polling_interval    (int)        : The length of a pooling period (a.k.a. the number of requests will be polled
-                                           every `polling_interval` minutes). Should be in the interval [0, 1440] (the
-                                           number of minutes in a day).
+        minute               (int)        : The minute of day at which to simulate the traffic. Should be in the interval
+                                            [0, 1440] (the number of minutes in a day).
+        min_traffic          (int)        : The minimum number of requests per minute during regular traffic times.
+        max_traffic          (int)        : The maximum number of requests per minute during regular traffic times.
+        max_traffic_at_peaks (list of int): The maximum number of requests per minute during each peak time.
+        peaks                (list of int): The list of times (as minute of day) that are considered "peak times". Each
+                                            value should be in the interval [0, 1440] (the number of minutes in a day).
+        peak_durations       (list of int): The list of numbers of minutes each peak should last.
+        polling_interval     (int)        : The length of a pooling period (a.k.a. the number of requests will be polled
+                                            every `polling_interval` minutes). Should be in the interval [0, 1440] (the
+                                            number of minutes in a day).
 
     Returns:
         int: The generated number of requests for the specified polling interval.
@@ -132,33 +104,33 @@ def simulate_poll_requests_with_peaks(minute: int,
             sum(gaussian(minute,
                          peak = peak,
                          height = max_traffic_at_peak * polling_interval,
-                         stdev = peak_duration // 4)
-                for peak
-                in peaks))
+                         stdev = math.ceil(peak_duration / 4))
+                for peak, peak_duration, max_traffic_at_peak
+                in zip(peaks, peak_durations, max_traffic_at_peaks)))
 
 
 def generate_day_dataset(polling_interval: int,
                          min_traffic: int,
                          max_traffic: int,
-                         max_traffic_at_peak: int,
-                         peak_duration: int,
-                         peak_times: List[str],
+                         peak_times: List[datetime],
+                         peak_durations: List[int],
+                         max_traffic_at_peaks: List[int],
                          plot: bool = False) -> np.ndarray:
     """Generate the dataset for a day.
 
     Args:
-        polling_interval    (int)        : The length of a pooling period (a.k.a. the number of requests will be polled
-                                           every `polling_interval` minutes). Should be in the interval [0, 1440] (the
-                                           number of minutes in a day).
-        min_traffic         (int)        : The minimum number of requests per minute during regular traffic times.
-        max_traffic         (int)        : The maximum number of requests per minute during regular traffic times.
-        max_traffic_at_peak (int)        : The maximum number of requests per minute during peak times.
-        peak_duration       (int)        : The number of minutes the peak should last.
-        peak_times          (list of str): The list of times (as strings of 24-hour format times, e.g. '08:30', '22:17')
-                                           that are considered "peak times". Each value should represent a valid time of
-                                           day.
-        plot                (bool)       : If this is `True` the returned dataset is also plotted. Mostly used for
-                                           debugging and demos.
+        polling_interval     (int)        : The length of a pooling period (a.k.a. the number of requests will be polled
+                                            every `polling_interval` minutes). Should be in the interval [0, 1440] (the
+                                            number of minutes in a day).
+        min_traffic          (int)        : The minimum number of requests per minute during regular traffic times.
+        max_traffic          (int)        : The maximum number of requests per minute during regular traffic times.
+        peak_times           (list of str): The list of times (as strings of 24-hour format times, e.g. '08:30',
+                                            '22:17') that are considered "peak times". Each value should represent a
+                                            valid time of day.
+        peak_durations       (list of int): The list of numbers of minutes each peak should last.
+        max_traffic_at_peaks (list of int): The maximum number of requests per minute during each peak time.
+        plot                 (bool)       : If this is `True` the returned dataset is also plotted. Mostly used for
+                                            debugging and demos.
 
     Returns:
         np.ndarray of int: The generated dataset consisting of a 1d Numpy array with requests per polling interval for
@@ -168,22 +140,19 @@ def generate_day_dataset(polling_interval: int,
     cycle_mins = 24 * 60
     cycle_time_steps = list(range(0, cycle_mins, polling_interval))
 
-    peaks = [peak.split(':') for peak in peak_times]
-    peaks = [int(peak[0]) * 60 + int(peak[1]) for peak in peaks]
+    peaks = [peak_time.hour * 60 + peak_time.minute for peak_time in peak_times]
 
     load_with_peaks = np.array([simulate_poll_requests_with_peaks(minute,
                                                                   min_traffic = min_traffic,
                                                                   max_traffic = max_traffic,
-                                                                  max_traffic_at_peak = max_traffic_at_peak,
+                                                                  max_traffic_at_peaks = max_traffic_at_peaks,
                                                                   peaks = peaks,
-                                                                  peak_duration = peak_duration,
+                                                                  peak_durations = peak_durations,
                                                                   polling_interval = polling_interval)
                                 for minute
                                 in cycle_time_steps])
 
     if plot:
-
-        cycle_mins = CYCLE_HRS * 60
 
         time_steps = list(zip(*[(mins // SUBDIVISION_MINS, f'{mins // 60:02d}:{mins % 60:02d}')
                                 for mins
@@ -217,7 +186,7 @@ if __name__ == '__main__':
 
     print(f'Number of requests polled every {SUBDIVISION_MINS} minutes.')
     print(f'Peaks at {", ".join(PEAKS[:-1])} and {PEAKS[-1]}.')
-    print(f'Each peak lasts approx. {PEAK_DURATION_MINS} minutes.')
+    print(f'Each peak lasts approx. {PEAK_DURATIONS_MINS} minutes.')
     print(f'Max traffic during peak times is {MAX_TRAFFIC_PER_MINUTE_AT_PEAK} per minute.')
     print(f'Usual traffic is between {MIN_TRAFFIC_PER_MINUTE} and {MAX_TRAFFIC_PER_MINUTE} requests per minute.')
     print()
@@ -256,7 +225,7 @@ if __name__ == '__main__':
                                                          max_traffic = MAX_TRAFFIC_PER_MINUTE,
                                                          max_traffic_at_peak = MAX_TRAFFIC_PER_MINUTE_AT_PEAK,
                                                          peaks = peaks,
-                                                         peak_duration = PEAK_DURATION_MINS,
+                                                         peak_durations = PEAK_DURATIONS_MINS,
                                                          polling_interval = SUBDIVISION_MINS)
                        for minute
                        in cycle_time_steps]
@@ -305,7 +274,7 @@ if __name__ == '__main__':
                                   min_traffic = MIN_TRAFFIC_PER_MINUTE,
                                   max_traffic = MAX_TRAFFIC_PER_MINUTE,
                                   max_traffic_at_peak = MAX_TRAFFIC_PER_MINUTE_AT_PEAK,
-                                  peak_duration = PEAK_DURATION_MINS,
+                                  peak_durations = PEAK_DURATIONS_MINS,
                                   peak_times = PEAKS),
              color = 'b',
              linewidth = 1)

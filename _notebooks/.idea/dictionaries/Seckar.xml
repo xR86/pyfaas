@@ -3,10 +3,16 @@
     <words>
       <w>dataset</w>
       <w>floordivby</w>
+      <w>jittered</w>
+      <w>jittering</w>
       <w>mins</w>
+      <w>mnday</w>
+      <w>mthday</w>
       <w>ndarray</w>
+      <w>stdev</w>
       <w>suff</w>
       <w>variated</w>
+      <w>wkday</w>
     </words>
   </dictionary>
 </component>
