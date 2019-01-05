@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 from typing import *
 
-from prediction.dataset.consts import *
+from prediction.dataset._consts import *
 
 
 def linear_mapping(val: float,

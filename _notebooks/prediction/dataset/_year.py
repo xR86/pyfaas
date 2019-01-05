@@ -8,8 +8,8 @@ import matplotlib
 matplotlib.use('TkAgg')
 from matplotlib import pyplot as plt
 
-from prediction.dataset import generate_month_dataset
-from prediction.dataset.consts import *
+from prediction.dataset._month import generate_month_dataset
+from prediction.dataset._consts import *
 
 
 raise NotImplementedError('Legacy module')

@@ -11,7 +11,10 @@ from matplotlib import pyplot as plt
 
 from typing import *
 
-from prediction.dataset import generate_day_dataset, generate_month_dataset
+from prediction.dataset import generate_day_dataset
+
+
+raise NotImplementedError('Legacy module')
 
 
 def jitter_peak_times(peak_times: List[str],
@@ -136,7 +139,7 @@ def generate_range_dataset(start_date: datetime.date,
     range_days = (end_date - start_date).days
 
     jittered_peaks = jitter_peak_times(peak_times, peak_time_max_variation, range_days)
-    jittered_peak_durations = jitter_peak_durations(peak_durations, pe)
+
 
     traffic = np.array([generate_day_dataset(polling_interval = polling_interval,
                                              min_traffic = min_traffic,

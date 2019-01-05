@@ -11,7 +11,7 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 from prediction.dataset import generate_day_dataset
-from prediction.dataset.consts import *
+from prediction.dataset._consts import *
 
 
 raise NotImplementedError('Legacy module')
