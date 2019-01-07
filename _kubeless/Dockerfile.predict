@@ -1,0 +1,7 @@
+FROM python
+
+RUN mkdir /app
+COPY . /app/.
+RUN pip install -r /app/requirements.txt
+
+CMD python /app/dummy_server.py

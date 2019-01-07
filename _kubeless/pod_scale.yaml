@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: scaling
+  labels:
+    app: scaling
+spec:
+  containers:
+  - env:
+    - name: PYFAAS_PREDICTION_SERVER
+      value: "http://predictionsvc:8080"
+    - name: PYFAAS_DEPLOYMENT
+      value: hello
+    name: worker
+    image: matei10/pyfaas_scale:8
+    imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: predict
+  labels:
+    app: predict
+spec:
+  containers:
+  - name: prediction-worker
+    image: matei10/pyfaas_predict:8
+    imagePullPolicy: Always
+    env:
+    - name: RESP
+      value: "50"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: predictionsvc
+spec:
+  selector:
+    app: predict
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
