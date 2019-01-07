@@ -5,6 +5,8 @@ metadata:
   labels:
     app: scaling
 spec:
+  serviceAccountName: admin-user
+  automountServiceAccountToken: true
   containers:
   - env:
     - name: PYFAAS_PREDICTION_SERVER
@@ -13,7 +15,6 @@ spec:
       value: hello
     name: worker
     image: matei10/pyfaas_scale:8
-    imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Pod
@@ -24,11 +25,11 @@ metadata:
 spec:
   containers:
   - name: prediction-worker
-    image: matei10/pyfaas_predict:8
+    image: matei10/pyfaas_predict:9
     imagePullPolicy: Always
     env:
     - name: RESP
-      value: "50"
+      value: "80"
 ---
 kind: Service
 apiVersion: v1

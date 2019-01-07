@@ -1,4 +1,4 @@
-TAG=8
+TAG=9
 all:
 	docker build -t matei10/pyfaas_scale:$(TAG) -f Dockerfile.scale .
 	docker build -t matei10/pyfaas_predict:$(TAG) -f Dockerfile.predict .
