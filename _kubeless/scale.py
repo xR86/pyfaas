@@ -20,7 +20,7 @@ REQUESTS_PER_CONTAINER = 10
 
 IN_CLUSTER = os.path.isdir("/var/run/secrets/kubernetes.io")
 if IN_CLUSTER:
-    config.load_incluster_config
+    config.load_incluster_config()
 else:
     config.load_kube_config()
 
