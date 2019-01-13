@@ -143,7 +143,7 @@ def generate_day_dataset(polling_interval: int,
                          max_traffic_at_peak: int,
                          peak_duration: int,
                          peak_times: List[str],
-                         plot: bool = False) -> List[int]:
+                         plot: bool = False) -> np.ndarray:
     """Generate the dataset for a day.
 
     Args:
@@ -161,8 +161,8 @@ def generate_day_dataset(polling_interval: int,
                                            debugging and demos.
 
     Returns:
-        list of int: The generated dataset consisting of a list requests per polling interval for each of the polling
-                     intervals over the course of a day.
+        np.ndarray of int: The generated dataset consisting of a 1d Numpy array with requests per polling interval for
+                           each of the polling intervals over the course of a day.
     """
 
     cycle_mins = 24 * 60
@@ -171,15 +171,39 @@ def generate_day_dataset(polling_interval: int,
     peaks = [peak.split(':') for peak in peak_times]
     peaks = [int(peak[0]) * 60 + int(peak[1]) for peak in peaks]
 
-    load_with_peaks = [simulate_poll_requests_with_peaks(minute,
-                                                         min_traffic = min_traffic,
-                                                         max_traffic = max_traffic,
-                                                         max_traffic_at_peak = max_traffic_at_peak,
-                                                         peaks = peaks,
-                                                         peak_duration = peak_duration,
-                                                         polling_interval = polling_interval)
-                       for minute
-                       in cycle_time_steps]
+    load_with_peaks = np.array([simulate_poll_requests_with_peaks(minute,
+                                                                  min_traffic = min_traffic,
+                                                                  max_traffic = max_traffic,
+                                                                  max_traffic_at_peak = max_traffic_at_peak,
+                                                                  peaks = peaks,
+                                                                  peak_duration = peak_duration,
+                                                                  polling_interval = polling_interval)
+                                for minute
+                                in cycle_time_steps])
+
+    if plot:
+
+        cycle_mins = CYCLE_HRS * 60
+
+        time_steps = list(zip(*[(mins // SUBDIVISION_MINS, f'{mins // 60:02d}:{mins % 60:02d}')
+                                for mins
+                                in range(0, cycle_mins, cycle_mins // 24)]))
+
+        time_steps = list(map(list, time_steps))
+
+        time_steps[0] += [time_steps[0][-1] + time_steps[0][1]]
+        time_steps[1] += ['24:00']
+
+        plt.plot(load_with_peaks, color = 'b', linewidth = 1)
+        plt.title('Traffic with peaks (generate_day_dataset())')
+        plt.legend([f'Requests per {polling_interval} minutes (with peaks)'])
+        plt.xlabel('Time of day')
+        plt.ylabel(f'Requests per {polling_interval} minutes')
+        plt.ylim([0, max_traffic_at_peak * polling_interval * 1.25])
+        plt.xticks(*time_steps)
+        plt.grid(True, linestyle = '--')
+
+        plt.show()
 
     if plot:
 
