@@ -6,6 +6,7 @@ kubectl create -f https://github.com/kubeless/kubeless/releases/download/$RELEAS
 # install dashboard 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 kubectl create -f https://raw.githubusercontent.com/kubeless/kubeless-ui/master/k8s.yaml
+helm install stable/prometheus-operator
 
 
 # get cli
