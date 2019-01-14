@@ -7,7 +7,7 @@ import functools
 class CallLoggingAspect():
     """Aspect that adds logging for a method."""
 
-    TEMPLATE = "[  AOP:  {:10} on {:15}] [Calls: {:3}|Ok: {:3}|Failed: {:3}] {}"
+    TEMPLATE = "[  AOP:  {:10} on {:25}] [Calls: {:3}|Ok: {:3}|Failed: {:3}] {}"
     def __init__(self, enter_message, exit_message):
         self._enter_message = enter_message
         self._exit_message = exit_message

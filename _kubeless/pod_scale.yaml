@@ -14,5 +14,5 @@ spec:
     - name: PYFAAS_DEPLOYMENT
       value: hello
     name: worker
-    image: matei10/pyfaas_scale:9
+    image: matei10/pyfaas_scale:10
     imagePullPolicy: Always
