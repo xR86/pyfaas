@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16f1d0b1-e677-4db0-a104-8f3bfe3e8021" name="Default Changelist" comment="">
+    <list default="true" id="16f1d0b1-e677-4db0-a104-8f3bfe3e8021" name="Default Changelist" comment="Completed Dataset wrapper and export functionality.">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Seckar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Seckar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/dataset/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/dataset/_day.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/dataset/_day.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/dataset/_month.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/dataset/_month.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/dataset/_range.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/dataset/_range.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/dataset/_year.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/dataset/_year.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/dataset/consts.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/dataset/_consts.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,51 +15,54 @@
     <SUITE FILE_PATH="coverage/_notebooks$year.coverage" NAME="year Coverage Results" MODIFIED="1545805090723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset" />
     <SUITE FILE_PATH="coverage/_notebooks$prediction__1_.coverage" NAME="prediction (1) Coverage Results" MODIFIED="1545808815374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/_notebooks$_day.coverage" NAME="_day Coverage Results" MODIFIED="1546619738750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prediction/dataset" />
-    <SUITE FILE_PATH="coverage/_notebooks$prediction.coverage" NAME="prediction Coverage Results" MODIFIED="1546726323860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/_notebooks$prediction.coverage" NAME="prediction Coverage Results" MODIFIED="1547472665928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/_notebooks$month.coverage" NAME="month Coverage Results" MODIFIED="1545804119560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset" />
     <SUITE FILE_PATH="coverage/_notebooks$day__1_.coverage" NAME="day (1) Coverage Results" MODIFIED="1545987736423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prediction/dataset" />
     <SUITE FILE_PATH="coverage/_notebooks$_year.coverage" NAME="_year Coverage Results" MODIFIED="1546619881859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prediction/dataset" />
     <SUITE FILE_PATH="coverage/_notebooks$test_month.coverage" NAME="test_month Coverage Results" MODIFIED="1541492365244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/_notebooks$_month.coverage" NAME="_month Coverage Results" MODIFIED="1546619815772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prediction/dataset" />
+    <SUITE FILE_PATH="coverage/_notebooks$main.coverage" NAME="Flask Coverage Results" MODIFIED="1547472331620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/_notebooks$day.coverage" NAME="day Coverage Results" MODIFIED="1545988280344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/prediction/dataset" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="794089373">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="3" />
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.6" value="5" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="ipynb" value="1" />
-          <entry key="py" value="26" />
+          <entry key="py" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IPNB" value="1" />
-          <entry key="Python" value="26" />
+          <entry key="Python" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="377" />
-          <entry key="dummy" value="22" />
-          <entry key="py" value="27442" />
-          <entry key="txt" value="452" />
+          <entry key="dummy" value="38" />
+          <entry key="py" value="46526" />
+          <entry key="txt" value="525" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="474" />
-          <entry key="Python" value="27819" />
+          <entry key="PLAIN_TEXT" value="563" />
+          <entry key="Python" value="46903" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -78,57 +75,28 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.79831934">
+    <splitter split-orientation="horizontal" split-proportion="0.52835226">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/prediction/preprocess/preprocess.py">
-              <provider selected="true" editor-type-id="text-editor" />
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/main.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="331">
+                  <caret line="118" column="27" lean-forward="true" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                    <marker date="1547472331604" expanded="true" signature="217:220" ph="..." />
+                    <marker date="1547472331604" expanded="true" signature="2563:3245" ph="..." />
+                  </folding>
+                </state>
+              </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/prediction.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/prediction/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="481" lean-forward="true" selection-start-line="481" selection-end-line="481" />
-                  <folding>
-                    <element signature="e#0#10#0" expanded="true" />
-                    <element signature="e#6501#6759#0" />
-                    <element signature="e#3307#3572#0" />
-                    <element signature="e#6998#7402#0" />
-                    <element signature="e#7578#8056#0" />
-                    <element signature="e#8240#8790#0" />
-                    <element signature="e#9000#9438#0" />
-                    <element signature="e#12545#12908#0" />
-                    <element signature="e#13300#13742#0" />
-                    <element signature="e#14187#14649#0" />
-                    <element signature="e#9738#10636#0" />
-                    <element signature="e#10690#11263#0" />
-                    <element signature="e#12355#12967#0" />
-                    <element signature="e#13800#14423#0" />
-                    <element signature="e#16902#17524#0" />
-                    <element signature="e#18719#20168#0" />
-                    <element signature="e#19755#21003#0" />
-                    <element signature="e#13189#13475#0" />
-                    <element signature="e#14716#14860#0" />
-                    <element signature="e#14947#15460#0" />
-                    <element signature="e#15527#16142#0" />
-                    <element signature="e#16066#16620#0" />
-                    <element signature="e#16679#17237#0" />
-                    <element signature="e#17472#17780#0" />
-                    <element signature="e#20710#22387#0" />
-                    <element signature="e#22478#23734#0" />
-                    <element signature="e#21408#25087#0" />
-                    <marker date="1546726689016" expanded="true" signature="1297:33946" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="9078:9087" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="13250:14436" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="20993:20994" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="20994:20999" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="21068:21369" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="22141:22196" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="28381:29703" ph="..." />
-                    <marker date="1546726689016" expanded="true" signature="28438:28447" ph="..." />
-                  </folding>
+                <state relative-caret-position="18">
+                  <caret line="1" selection-start-line="1" selection-end-line="1" />
                 </state>
               </provider>
             </entry>
@@ -137,18 +105,41 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/prediction/dataset/__init__.py">
-              <provider selected="true" editor-type-id="text-editor" />
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/prediction/_model.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="469" column="49" selection-start-line="469" selection-start-column="49" selection-end-line="469" selection-end-column="49" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                    <marker date="1547472665917" expanded="true" signature="787:792" ph="..." />
+                    <marker date="1547472665917" expanded="true" signature="1899:2111" ph="..." />
+                    <marker date="1547472665917" expanded="true" signature="13776:13790" ph="..." />
+                  </folding>
+                </state>
+              </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/prediction/dataset/_month.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/prediction/_ga_utils.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="468">
-                  <caret line="110" selection-start-line="110" selection-end-line="110" />
+                <state relative-caret-position="-1129">
+                  <caret line="102" selection-start-line="102" selection-end-line="102" />
                   <folding>
-                    <element signature="e#0#13#0" expanded="true" />
+                    <marker date="1547406299443" expanded="true" signature="3928:3931" ph="..." />
+                    <marker date="1547406299443" expanded="true" signature="3972:3977" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/prediction/dataset/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="18">
+                  <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#38#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -157,7 +148,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/prediction/dataset/_day.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="504">
+                <state relative-caret-position="396">
                   <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
@@ -167,10 +158,14 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/prediction/dataset/_consts.py">
+            <entry file="file://$PROJECT_DIR$/prediction/dataset/_dataset.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="162">
-                  <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+                <state relative-caret-position="438">
+                  <caret line="619" column="41" selection-start-line="619" selection-start-column="41" selection-end-line="619" selection-end-column="41" />
+                  <folding>
+                    <element signature="e#0#13#0" expanded="true" />
+                    <marker date="1547433828785" expanded="true" signature="21365:21370" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -185,6 +180,14 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>test_</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>val_</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -209,15 +212,21 @@
         <option value="$PROJECT_DIR$/prediction/prediction.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/month.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/day.py" />
-        <option value="$PROJECT_DIR$/prediction/__init__.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/consts.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/_day.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/_month.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/_year.py" />
-        <option value="$PROJECT_DIR$/prediction/dataset/__init__.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/_range.py" />
         <option value="$PROJECT_DIR$/prediction/dataset/_consts.py" />
+        <option value="$PROJECT_DIR$/prediction/dataset/__init__.py" />
+        <option value="$PROJECT_DIR$/prediction/__init__.py" />
+        <option value="$PROJECT_DIR$/prediction/ga_utils.py" />
+        <option value="$PROJECT_DIR$/prediction/_ga_utils.py" />
+        <option value="$PROJECT_DIR$/prediction/dataset/_dataset.py" />
         <option value="$PROJECT_DIR$/prediction.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/prediction_demo.py" />
+        <option value="$PROJECT_DIR$/prediction/_model.py" />
       </list>
     </option>
   </component>
@@ -227,11 +236,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="195" />
-    <option name="y" value="39" />
-    <option name="width" value="1590" />
-    <option name="height" value="1062" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="21" />
+    <option name="y" value="123" />
+    <option name="width" value="1841" />
+    <option name="height" value="871" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -251,52 +260,28 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="_notebooks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="_notebooks" type="462c0819:PsiDirectoryNode" />
-              <item name="prediction" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="_notebooks" type="462c0819:PsiDirectoryNode" />
-              <item name="prediction" type="462c0819:PsiDirectoryNode" />
-              <item name="dataset" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="_notebooks" type="462c0819:PsiDirectoryNode" />
-              <item name="prediction" type="462c0819:PsiDirectoryNode" />
-              <item name="preprocess" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
             <path>
-              <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Extensions" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+              <item name="_notebooks" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
             <path>
-              <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Extensions" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-              <item name="com.intellij.database" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
-            </path>
-            <path>
-              <item name="_notebooks" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Extensions" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-              <item name="com.intellij.database" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
-              <item name="schema" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
+              <item name="_notebooks" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="prediction" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -306,17 +291,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dataset" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Tools\GitHub Repos\pyfaas\_notebooks\research_notebooks" />
       <recent name="E:\Tools\GitHub Repos\pyfaas\_notebooks" />
       <recent name="E:\Tools\GitHub Repos\pyfaas\_notebooks\prediction\preprocess" />
       <recent name="E:\Tools\GitHub Repos\pyfaas\_notebooks\prediction" />
       <recent name="E:\Tools\GitHub Repos\pyfaas\_notebooks\dataset" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Tools\GitHub Repos\pyfaas\_notebooks\prediction" />
+      <recent name="E:\Tools\GitHub Repos\pyfaas\_notebooks\prediction\dataset" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -331,7 +321,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.prediction">
+  <component name="RunManager" selected="Flask server._notebooks">
+    <configuration name="Flask" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="_notebooks" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="&quot;.\model&quot; alpha" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="_day" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="_notebooks" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -398,28 +410,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="day" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="_notebooks" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/prediction/dataset" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\Tools\GitHub Repos\pyfaas\_notebooks\prediction\dataset\_day.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="prediction" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="_notebooks" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -433,13 +423,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prediction.py" />
+      <option name="SCRIPT_NAME" value="E:\Tools\GitHub Repos\pyfaas\_notebooks\prediction_demo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="_notebooks" type="Python.FlaskServer" factoryName="Flask server">
+      <module name="_notebooks" />
+      <option name="target" value="$PROJECT_DIR$/main.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="test_month" type="tests" factoryName="Doctests">
@@ -463,19 +468,20 @@
     </configuration>
     <list>
       <item itemvalue="Python tests.test_month" />
-      <item itemvalue="Python.day" />
       <item itemvalue="Python._day" />
       <item itemvalue="Python._month" />
       <item itemvalue="Python.prediction" />
       <item itemvalue="Python._year" />
+      <item itemvalue="Python.Flask" />
+      <item itemvalue="Flask server._notebooks" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.prediction" />
+        <item itemvalue="Python.Flask" />
         <item itemvalue="Python._year" />
         <item itemvalue="Python._month" />
         <item itemvalue="Python._day" />
-        <item itemvalue="Python.day" />
       </list>
     </recent_temporary>
   </component>
@@ -518,7 +524,21 @@
       <option name="project" value="LOCAL" />
       <updated>1546635127081</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Completed Dataset wrapper and export functionality.">
+      <created>1546726711442</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1546726711442</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Completed beta model.">
+      <created>1547474696650</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1547474696650</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -554,25 +574,24 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="48" y="128" width="1841" height="871" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17863014" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32994923" />
-      <window_info anchor="bottom" x="322" y="268" width="1037" height="695" id="Run" order="2" type="FLOATING" weight="0.19695431" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" x="600" y="506" width="1131" height="619" id="Run" order="2" type="FLOATING" visible="true" weight="0.19695431" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39898476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3292683" />
+      <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" weight="0.32894737" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.32994923" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.46700507" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -581,7 +600,7 @@
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" x="0" y="0" width="434" height="896" id="Documentation" order="7" side_tool="true" weight="0.3296875" />
+      <window_info anchor="right" x="0" y="0" width="434" height="896" id="Documentation" order="7" side_tool="true" weight="0.30739725" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1125" />
@@ -622,46 +641,32 @@
     <MESSAGE value="Added year dataset generation docstring." />
     <MESSAGE value="Moved dataset format nu numpy arrays and reorganized dataset package.&#10;&#10;Package reorganization was necessary to make the transition rom dataset generation to complete prediction package." />
     <MESSAGE value="Created Dataset wrapper class and as_[period]() methods.&#10;Created base for working with sklearn-like models.&#10;Made _month and _year modules legacy." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Dataset wrapper class and as_[period]() methods.&#10;Created base for working with sklearn-like models.&#10;Made _month and _year modules legacy." />
+    <MESSAGE value="Completed Dataset wrapper and export functionality." />
+    <MESSAGE value="Completed beta model." />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed beta model." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/month_research.ipynb">
+    <entry file="file://$PROJECT_DIR$/research_notebooks/month_research.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prediction/preprocess/preprocess.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prediction/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prediction/dataset/_year.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1546711526379" expanded="true" signature="721:726" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prediction/dataset/_range.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prediction/dataset/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction/preprocess/preprocess.py" />
+    <entry file="file://$PROJECT_DIR$/prediction/dataset/_year.py" />
+    <entry file="file://$PROJECT_DIR$/prediction/dataset/_range.py" />
     <entry file="file://$PROJECT_DIR$/prediction/dataset/_consts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -669,9 +674,104 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/prediction/dataset/_month.py" />
+    <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/-671442994/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="1174" column="8" selection-start-line="1174" selection-start-column="8" selection-end-line="1174" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/xgboost/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7524">
+          <caret line="430" selection-start-line="430" selection-end-line="430" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/sklearn/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="327" column="20" selection-start-line="327" selection-start-column="20" selection-end-line="327" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/sklearn/metrics/regression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="533" selection-start-line="533" selection-end-line="533" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/sklearn/utils/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/deap/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-725">
+          <caret line="120" column="6" selection-start-line="120" selection-start-column="6" selection-end-line="120" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/deap/tools/support.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="182" column="8" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/deap/algorithms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-977">
+          <caret line="84" column="4" selection-start-line="84" selection-start-column="4" selection-end-line="84" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/deap/gp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157">
+          <caret line="343" column="8" selection-start-line="343" selection-start-column="8" selection-end-line="343" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/deap/creator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="107" column="68" selection-start-line="107" selection-start-column="55" selection-end-line="107" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/multiprocessing/pool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6408">
+          <caret line="367" column="8" selection-start-line="367" selection-start-column="8" selection-end-line="367" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction/dataset/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/prediction/dataset/_day.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
+        <state relative-caret-position="396">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -679,57 +779,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prediction/dataset/_month.py">
+    <entry file="file://$PROJECT_DIR$/prediction/_ga_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="-1129">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1547406299443" expanded="true" signature="3928:3931" ph="..." />
+            <marker date="1547406299443" expanded="true" signature="3972:3977" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prediction.py">
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/xgboost/compat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="481" lean-forward="true" selection-start-line="481" selection-end-line="481" />
+        <state relative-caret-position="318">
+          <caret line="74" column="31" lean-forward="true" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../Languages/Python36/Lib/site-packages/xgboost/sklearn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1150">
+          <caret line="210" column="40" lean-forward="true" selection-start-line="210" selection-start-column="40" selection-end-line="210" selection-end-column="40" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#6501#6759#0" />
-            <element signature="e#3307#3572#0" />
-            <element signature="e#6998#7402#0" />
-            <element signature="e#7578#8056#0" />
-            <element signature="e#8240#8790#0" />
-            <element signature="e#9000#9438#0" />
-            <element signature="e#12545#12908#0" />
-            <element signature="e#13300#13742#0" />
-            <element signature="e#14187#14649#0" />
-            <element signature="e#9738#10636#0" />
-            <element signature="e#10690#11263#0" />
-            <element signature="e#12355#12967#0" />
-            <element signature="e#13800#14423#0" />
-            <element signature="e#16902#17524#0" />
-            <element signature="e#18719#20168#0" />
-            <element signature="e#19755#21003#0" />
-            <element signature="e#13189#13475#0" />
-            <element signature="e#14716#14860#0" />
-            <element signature="e#14947#15460#0" />
-            <element signature="e#15527#16142#0" />
-            <element signature="e#16066#16620#0" />
-            <element signature="e#16679#17237#0" />
-            <element signature="e#17472#17780#0" />
-            <element signature="e#20710#22387#0" />
-            <element signature="e#22478#23734#0" />
-            <element signature="e#21408#25087#0" />
-            <marker date="1546726689016" expanded="true" signature="1297:33946" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="9078:9087" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="13250:14436" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="20993:20994" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="20994:20999" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="21068:21369" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="22141:22196" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="28381:29703" ph="..." />
-            <marker date="1546726689016" expanded="true" signature="28438:28447" ph="..." />
+            <element signature="e#155#193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction/dataset/_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="619" column="41" selection-start-line="619" selection-start-column="41" selection-end-line="619" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1547433828785" expanded="true" signature="21365:21370" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="108" column="23" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1547472530097" expanded="true" signature="2529:3246" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction/_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="469" column="49" selection-start-line="469" selection-start-column="49" selection-end-line="469" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1547472665917" expanded="true" signature="787:792" ph="..." />
+            <marker date="1547472665917" expanded="true" signature="1899:2111" ph="..." />
+            <marker date="1547472665917" expanded="true" signature="13776:13790" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="118" column="27" lean-forward="true" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1547472331604" expanded="true" signature="217:220" ph="..." />
+            <marker date="1547472331604" expanded="true" signature="2563:3245" ph="..." />
           </folding>
         </state>
       </provider>

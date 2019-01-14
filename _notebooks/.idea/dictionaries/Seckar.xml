@@ -1,14 +1,28 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Seckar">
     <words>
+      <w>coeff</w>
+      <w>coeffs</w>
       <w>dataset</w>
+      <w>deap</w>
+      <w>disp</w>
+      <w>evals</w>
+      <w>fitnesses</w>
       <w>floordivby</w>
+      <w>fname</w>
+      <w>inds</w>
       <w>jittered</w>
       <w>jittering</w>
       <w>mins</w>
       <w>mnday</w>
+      <w>mond</w>
       <w>mthday</w>
       <w>ndarray</w>
+      <w>paralellize</w>
+      <w>pred</w>
+      <w>pset</w>
+      <w>regressor</w>
+      <w>rmse</w>
       <w>stdev</w>
       <w>suff</w>
       <w>variated</w>
