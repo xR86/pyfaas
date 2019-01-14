@@ -1,3 +1,6 @@
 kubernetes
 requests
 cherrypy
+pytest
+pytest-cov
+pytest-html
