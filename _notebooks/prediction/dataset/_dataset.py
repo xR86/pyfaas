@@ -1,10 +1,9 @@
-import sys
-import time as t
 import random
 import calendar
-from datetime import datetime
+from datetime import datetime, date
 from datetime import timedelta
 from functools import partial
+from itertools import chain
 
 import numpy as np
 
@@ -181,7 +180,7 @@ class Dataset:
                                         min_holiday_season_traffic_variation = min_holiday_season_traffic_variation,
                                         max_holiday_season_traffic_variation = max_holiday_season_traffic_variation)
 
-        self._generate_data()
+        self._data = None
 
     def _initialize_start_and_end_date(self,
                                        start_date: Tuple[int, int, int],
@@ -454,7 +453,7 @@ class Dataset:
 
             cur_date += delta
 
-    def _generate_data(self):
+    def generate_data(self):
 
         jittered_peak_times_for_range = self._jitter_peak_times()
         jittered_peak_durations_for_range = self._jitter_peak_durations()
@@ -490,6 +489,37 @@ class Dataset:
             result += [(*curr_time, moment)]
             curr_time[1] += self.polling_interval
         return result
+
+    @staticmethod
+    def from_data(data: Union[np.ndarray, List[np.ndarray]],
+                  start_date: Union[date, datetime, Tuple[int, int, int]],
+                  end_date: Union[date, datetime, Tuple[int, int, int]],
+                  polling_interval: int) -> 'Dataset':
+
+        if isinstance(data, np.ndarray):
+            data = list(data)
+
+        if isinstance(start_date, date) or isinstance(start_date, datetime):
+            start_date = (start_date.year, start_date.month, start_date.day)
+
+        if isinstance(end_date, date) or isinstance(end_date, datetime):
+            end_date = (end_date.year, end_date.month, end_date.day)
+
+        dataset = Dataset(start_date = start_date,
+                          end_date = end_date,
+                          polling_interval = polling_interval,
+                          min_traffic = 1,
+                          max_traffic = 2,
+                          peak_times = [],
+                          peak_time_max_variation = 1,
+                          peak_durations = [],
+                          peak_duration_max_variation = 1,
+                          max_traffic_at_peaks = [],
+                          max_traffic_at_peak_variation = 1)
+
+        dataset._data = data
+
+        return dataset
 
     @property
     def start_date(self) -> datetime:
@@ -529,7 +559,10 @@ class Dataset:
 
     @property
     def max_traffic_at_peaks(self) -> List[int]:
-        return self._max_traffic_at_peaks
+        if self._max_traffic_at_peaks:
+            return self._max_traffic_at_peaks
+        else:
+            return [np.array(self.data).max() // self.polling_interval]
 
     @property
     def max_traffic_at_peak_variation(self) -> int:
@@ -649,6 +682,20 @@ class Dataset:
             curr_date += delta
         data = np.array(data).astype(int)
         return data
+
+    def get_timestamp(self, year: int, month: int, day: int, hour: int, minute: int) -> int:
+
+        date = datetime(year = year, month = month, day = day, hour = hour, minute = minute)
+
+        if not self.start_date <= date or not date <= self.end_date:
+            raise ValueError('The date must be between he start date and end date.')
+
+        delta = date - self.start_date
+        day_ind = delta.days
+        minute_ind = delta.seconds // 60
+        polling_interval_ind = minute_ind // self.polling_interval
+
+        return self.data[day_ind][polling_interval_ind]
 
     def get_day(self, year: int, month: int, day: int) -> np.ndarray:
 
