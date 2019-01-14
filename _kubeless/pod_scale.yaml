@@ -14,31 +14,5 @@ spec:
     - name: PYFAAS_DEPLOYMENT
       value: hello
     name: worker
-    image: matei10/pyfaas_scale:8
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: predict
-  labels:
-    app: predict
-spec:
-  containers:
-  - name: prediction-worker
-    image: matei10/pyfaas_predict:9
+    image: matei10/pyfaas_scale:9
     imagePullPolicy: Always
-    env:
-    - name: RESP
-      value: "80"
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: predictionsvc
-spec:
-  selector:
-    app: predict
-  ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
